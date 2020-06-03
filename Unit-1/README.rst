@@ -19,6 +19,8 @@ and post the link so your teammates can join.
 
 Further instructions for the days warm up can be found in 
 
-`docs/day-2-git-fundamentals.png`
+```
+docs/day-2-git-fundamentals.png
+```
 
 Good luck!

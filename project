@@ -1,0 +1,1635 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled25.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "authorship_tag": "ABX9TyNWkK7TPaJbiXkRGBkyRS31",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/nealonleo9/Daily-Warm-Ups/blob/master/project\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "YMOdFmQ8BIGh",
+        "colab_type": "code",
+        "colab": {
+          "resources": {
+            "http://localhost:8080/nbextensions/google.colab/files.js": {
+              "data": "Ly8gQ29weXJpZ2h0IDIwMTcgR29vZ2xlIExMQwovLwovLyBMaWNlbnNlZCB1bmRlciB0aGUgQXBhY2hlIExpY2Vuc2UsIFZlcnNpb24gMi4wICh0aGUgIkxpY2Vuc2UiKTsKLy8geW91IG1heSBub3QgdXNlIHRoaXMgZmlsZSBleGNlcHQgaW4gY29tcGxpYW5jZSB3aXRoIHRoZSBMaWNlbnNlLgovLyBZb3UgbWF5IG9idGFpbiBhIGNvcHkgb2YgdGhlIExpY2Vuc2UgYXQKLy8KLy8gICAgICBodHRwOi8vd3d3LmFwYWNoZS5vcmcvbGljZW5zZXMvTElDRU5TRS0yLjAKLy8KLy8gVW5sZXNzIHJlcXVpcmVkIGJ5IGFwcGxpY2FibGUgbGF3IG9yIGFncmVlZCB0byBpbiB3cml0aW5nLCBzb2Z0d2FyZQovLyBkaXN0cmlidXRlZCB1bmRlciB0aGUgTGljZW5zZSBpcyBkaXN0cmlidXRlZCBvbiBhbiAiQVMgSVMiIEJBU0lTLAovLyBXSVRIT1VUIFdBUlJBTlRJRVMgT1IgQ09ORElUSU9OUyBPRiBBTlkgS0lORCwgZWl0aGVyIGV4cHJlc3Mgb3IgaW1wbGllZC4KLy8gU2VlIHRoZSBMaWNlbnNlIGZvciB0aGUgc3BlY2lmaWMgbGFuZ3VhZ2UgZ292ZXJuaW5nIHBlcm1pc3Npb25zIGFuZAovLyBsaW1pdGF0aW9ucyB1bmRlciB0aGUgTGljZW5zZS4KCi8qKgogKiBAZmlsZW92ZXJ2aWV3IEhlbHBlcnMgZm9yIGdvb2dsZS5jb2xhYiBQeXRob24gbW9kdWxlLgogKi8KKGZ1bmN0aW9uKHNjb3BlKSB7CmZ1bmN0aW9uIHNwYW4odGV4dCwgc3R5bGVBdHRyaWJ1dGVzID0ge30pIHsKICBjb25zdCBlbGVtZW50ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc3BhbicpOwogIGVsZW1lbnQudGV4dENvbnRlbnQgPSB0ZXh0OwogIGZvciAoY29uc3Qga2V5IG9mIE9iamVjdC5rZXlzKHN0eWxlQXR0cmlidXRlcykpIHsKICAgIGVsZW1lbnQuc3R5bGVba2V5XSA9IHN0eWxlQXR0cmlidXRlc1trZXldOwogIH0KICByZXR1cm4gZWxlbWVudDsKfQoKLy8gTWF4IG51bWJlciBvZiBieXRlcyB3aGljaCB3aWxsIGJlIHVwbG9hZGVkIGF0IGEgdGltZS4KY29uc3QgTUFYX1BBWUxPQURfU0laRSA9IDEwMCAqIDEwMjQ7CgpmdW5jdGlvbiBfdXBsb2FkRmlsZXMoaW5wdXRJZCwgb3V0cHV0SWQpIHsKICBjb25zdCBzdGVwcyA9IHVwbG9hZEZpbGVzU3RlcChpbnB1dElkLCBvdXRwdXRJZCk7CiAgY29uc3Qgb3V0cHV0RWxlbWVudCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKG91dHB1dElkKTsKICAvLyBDYWNoZSBzdGVwcyBvbiB0aGUgb3V0cHV0RWxlbWVudCB0byBtYWtlIGl0IGF2YWlsYWJsZSBmb3IgdGhlIG5leHQgY2FsbAogIC8vIHRvIHVwbG9hZEZpbGVzQ29udGludWUgZnJvbSBQeXRob24uCiAgb3V0cHV0RWxlbWVudC5zdGVwcyA9IHN0ZXBzOwoKICByZXR1cm4gX3VwbG9hZEZpbGVzQ29udGludWUob3V0cHV0SWQpOwp9CgovLyBUaGlzIGlzIHJvdWdobHkgYW4gYXN5bmMgZ2VuZXJhdG9yIChub3Qgc3VwcG9ydGVkIGluIHRoZSBicm93c2VyIHlldCksCi8vIHdoZXJlIHRoZXJlIGFyZSBtdWx0aXBsZSBhc3luY2hyb25vdXMgc3RlcHMgYW5kIHRoZSBQeXRob24gc2lkZSBpcyBnb2luZwovLyB0byBwb2xsIGZvciBjb21wbGV0aW9uIG9mIGVhY2ggc3RlcC4KLy8gVGhpcyB1c2VzIGEgUHJvbWlzZSB0byBibG9jayB0aGUgcHl0aG9uIHNpZGUgb24gY29tcGxldGlvbiBvZiBlYWNoIHN0ZXAsCi8vIHRoZW4gcGFzc2VzIHRoZSByZXN1bHQgb2YgdGhlIHByZXZpb3VzIHN0ZXAgYXMgdGhlIGlucHV0IHRvIHRoZSBuZXh0IHN0ZXAuCmZ1bmN0aW9uIF91cGxvYWRGaWxlc0NvbnRpbnVlKG91dHB1dElkKSB7CiAgY29uc3Qgb3V0cHV0RWxlbWVudCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKG91dHB1dElkKTsKICBjb25zdCBzdGVwcyA9IG91dHB1dEVsZW1lbnQuc3RlcHM7CgogIGNvbnN0IG5leHQgPSBzdGVwcy5uZXh0KG91dHB1dEVsZW1lbnQubGFzdFByb21pc2VWYWx1ZSk7CiAgcmV0dXJuIFByb21pc2UucmVzb2x2ZShuZXh0LnZhbHVlLnByb21pc2UpLnRoZW4oKHZhbHVlKSA9PiB7CiAgICAvLyBDYWNoZSB0aGUgbGFzdCBwcm9taXNlIHZhbHVlIHRvIG1ha2UgaXQgYXZhaWxhYmxlIHRvIHRoZSBuZXh0CiAgICAvLyBzdGVwIG9mIHRoZSBnZW5lcmF0b3IuCiAgICBvdXRwdXRFbGVtZW50Lmxhc3RQcm9taXNlVmFsdWUgPSB2YWx1ZTsKICAgIHJldHVybiBuZXh0LnZhbHVlLnJlc3BvbnNlOwogIH0pOwp9CgovKioKICogR2VuZXJhdG9yIGZ1bmN0aW9uIHdoaWNoIGlzIGNhbGxlZCBiZXR3ZWVuIGVhY2ggYXN5bmMgc3RlcCBvZiB0aGUgdXBsb2FkCiAqIHByb2Nlc3MuCiAqIEBwYXJhbSB7c3RyaW5nfSBpbnB1dElkIEVsZW1lbnQgSUQgb2YgdGhlIGlucHV0IGZpbGUgcGlja2VyIGVsZW1lbnQuCiAqIEBwYXJhbSB7c3RyaW5nfSBvdXRwdXRJZCBFbGVtZW50IElEIG9mIHRoZSBvdXRwdXQgZGlzcGxheS4KICogQHJldHVybiB7IUl0ZXJhYmxlPCFPYmplY3Q+fSBJdGVyYWJsZSBvZiBuZXh0IHN0ZXBzLgogKi8KZnVuY3Rpb24qIHVwbG9hZEZpbGVzU3RlcChpbnB1dElkLCBvdXRwdXRJZCkgewogIGNvbnN0IGlucHV0RWxlbWVudCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGlucHV0SWQpOwogIGlucHV0RWxlbWVudC5kaXNhYmxlZCA9IGZhbHNlOwoKICBjb25zdCBvdXRwdXRFbGVtZW50ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQob3V0cHV0SWQpOwogIG91dHB1dEVsZW1lbnQuaW5uZXJIVE1MID0gJyc7CgogIGNvbnN0IHBpY2tlZFByb21pc2UgPSBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gewogICAgaW5wdXRFbGVtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ2NoYW5nZScsIChlKSA9PiB7CiAgICAgIHJlc29sdmUoZS50YXJnZXQuZmlsZXMpOwogICAgfSk7CiAgfSk7CgogIGNvbnN0IGNhbmNlbCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2J1dHRvbicpOwogIGlucHV0RWxlbWVudC5wYXJlbnRFbGVtZW50LmFwcGVuZENoaWxkKGNhbmNlbCk7CiAgY2FuY2VsLnRleHRDb250ZW50ID0gJ0NhbmNlbCB1cGxvYWQnOwogIGNvbnN0IGNhbmNlbFByb21pc2UgPSBuZXcgUHJvbWlzZSgocmVzb2x2ZSkgPT4gewogICAgY2FuY2VsLm9uY2xpY2sgPSAoKSA9PiB7CiAgICAgIHJlc29sdmUobnVsbCk7CiAgICB9OwogIH0pOwoKICAvLyBXYWl0IGZvciB0aGUgdXNlciB0byBwaWNrIHRoZSBmaWxlcy4KICBjb25zdCBmaWxlcyA9IHlpZWxkIHsKICAgIHByb21pc2U6IFByb21pc2UucmFjZShbcGlja2VkUHJvbWlzZSwgY2FuY2VsUHJvbWlzZV0pLAogICAgcmVzcG9uc2U6IHsKICAgICAgYWN0aW9uOiAnc3RhcnRpbmcnLAogICAgfQogIH07CgogIGNhbmNlbC5yZW1vdmUoKTsKCiAgLy8gRGlzYWJsZSB0aGUgaW5wdXQgZWxlbWVudCBzaW5jZSBmdXJ0aGVyIHBpY2tzIGFyZSBub3QgYWxsb3dlZC4KICBpbnB1dEVsZW1lbnQuZGlzYWJsZWQgPSB0cnVlOwoKICBpZiAoIWZpbGVzKSB7CiAgICByZXR1cm4gewogICAgICByZXNwb25zZTogewogICAgICAgIGFjdGlvbjogJ2NvbXBsZXRlJywKICAgICAgfQogICAgfTsKICB9CgogIGZvciAoY29uc3QgZmlsZSBvZiBmaWxlcykgewogICAgY29uc3QgbGkgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdsaScpOwogICAgbGkuYXBwZW5kKHNwYW4oZmlsZS5uYW1lLCB7Zm9udFdlaWdodDogJ2JvbGQnfSkpOwogICAgbGkuYXBwZW5kKHNwYW4oCiAgICAgICAgYCgke2ZpbGUudHlwZSB8fCAnbi9hJ30pIC0gJHtmaWxlLnNpemV9IGJ5dGVzLCBgICsKICAgICAgICBgbGFzdCBtb2RpZmllZDogJHsKICAgICAgICAgICAgZmlsZS5sYXN0TW9kaWZpZWREYXRlID8gZmlsZS5sYXN0TW9kaWZpZWREYXRlLnRvTG9jYWxlRGF0ZVN0cmluZygpIDoKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJ24vYSd9IC0gYCkpOwogICAgY29uc3QgcGVyY2VudCA9IHNwYW4oJzAlIGRvbmUnKTsKICAgIGxpLmFwcGVuZENoaWxkKHBlcmNlbnQpOwoKICAgIG91dHB1dEVsZW1lbnQuYXBwZW5kQ2hpbGQobGkpOwoKICAgIGNvbnN0IGZpbGVEYXRhUHJvbWlzZSA9IG5ldyBQcm9taXNlKChyZXNvbHZlKSA9PiB7CiAgICAgIGNvbnN0IHJlYWRlciA9IG5ldyBGaWxlUmVhZGVyKCk7CiAgICAgIHJlYWRlci5vbmxvYWQgPSAoZSkgPT4gewogICAgICAgIHJlc29sdmUoZS50YXJnZXQucmVzdWx0KTsKICAgICAgfTsKICAgICAgcmVhZGVyLnJlYWRBc0FycmF5QnVmZmVyKGZpbGUpOwogICAgfSk7CiAgICAvLyBXYWl0IGZvciB0aGUgZGF0YSB0byBiZSByZWFkeS4KICAgIGxldCBmaWxlRGF0YSA9IHlpZWxkIHsKICAgICAgcHJvbWlzZTogZmlsZURhdGFQcm9taXNlLAogICAgICByZXNwb25zZTogewogICAgICAgIGFjdGlvbjogJ2NvbnRpbnVlJywKICAgICAgfQogICAgfTsKCiAgICAvLyBVc2UgYSBjaHVua2VkIHNlbmRpbmcgdG8gYXZvaWQgbWVzc2FnZSBzaXplIGxpbWl0cy4gU2VlIGIvNjIxMTU2NjAuCiAgICBsZXQgcG9zaXRpb24gPSAwOwogICAgd2hpbGUgKHBvc2l0aW9uIDwgZmlsZURhdGEuYnl0ZUxlbmd0aCkgewogICAgICBjb25zdCBsZW5ndGggPSBNYXRoLm1pbihmaWxlRGF0YS5ieXRlTGVuZ3RoIC0gcG9zaXRpb24sIE1BWF9QQVlMT0FEX1NJWkUpOwogICAgICBjb25zdCBjaHVuayA9IG5ldyBVaW50OEFycmF5KGZpbGVEYXRhLCBwb3NpdGlvbiwgbGVuZ3RoKTsKICAgICAgcG9zaXRpb24gKz0gbGVuZ3RoOwoKICAgICAgY29uc3QgYmFzZTY0ID0gYnRvYShTdHJpbmcuZnJvbUNoYXJDb2RlLmFwcGx5KG51bGwsIGNodW5rKSk7CiAgICAgIHlpZWxkIHsKICAgICAgICByZXNwb25zZTogewogICAgICAgICAgYWN0aW9uOiAnYXBwZW5kJywKICAgICAgICAgIGZpbGU6IGZpbGUubmFtZSwKICAgICAgICAgIGRhdGE6IGJhc2U2NCwKICAgICAgICB9LAogICAgICB9OwogICAgICBwZXJjZW50LnRleHRDb250ZW50ID0KICAgICAgICAgIGAke01hdGgucm91bmQoKHBvc2l0aW9uIC8gZmlsZURhdGEuYnl0ZUxlbmd0aCkgKiAxMDApfSUgZG9uZWA7CiAgICB9CiAgfQoKICAvLyBBbGwgZG9uZS4KICB5aWVsZCB7CiAgICByZXNwb25zZTogewogICAgICBhY3Rpb246ICdjb21wbGV0ZScsCiAgICB9CiAgfTsKfQoKc2NvcGUuZ29vZ2xlID0gc2NvcGUuZ29vZ2xlIHx8IHt9OwpzY29wZS5nb29nbGUuY29sYWIgPSBzY29wZS5nb29nbGUuY29sYWIgfHwge307CnNjb3BlLmdvb2dsZS5jb2xhYi5fZmlsZXMgPSB7CiAgX3VwbG9hZEZpbGVzLAogIF91cGxvYWRGaWxlc0NvbnRpbnVlLAp9Owp9KShzZWxmKTsK",
+              "ok": true,
+              "headers": [
+                [
+                  "content-type",
+                  "application/javascript"
+                ]
+              ],
+              "status": 200,
+              "status_text": ""
+            }
+          },
+          "base_uri": "https://localhost:8080/",
+          "height": 416
+        },
+        "outputId": "2f3e6be2-d09d-4738-d5b9-ed9f3d291764"
+      },
+      "source": [
+        "from google.colab import files\n",
+        "uploaded = files.upload()"
+      ],
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/html": [
+              "\n",
+              "     <input type=\"file\" id=\"files-960cf012-5061-4bf2-9513-a81523a8010f\" name=\"files[]\" multiple disabled\n",
+              "        style=\"border:none\" />\n",
+              "     <output id=\"result-960cf012-5061-4bf2-9513-a81523a8010f\">\n",
+              "      Upload widget is only available when the cell has been executed in the\n",
+              "      current browser session. Please rerun this cell to enable.\n",
+              "      </output>\n",
+              "      <script src=\"/nbextensions/google.colab/files.js\"></script> "
+            ],
+            "text/plain": [
+              "<IPython.core.display.HTML object>"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "Saving 388_793053_bundle_archive.zip to 388_793053_bundle_archive (1).zip\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "error",
+          "ename": "KeyboardInterrupt",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mKeyboardInterrupt\u001b[0m                         Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-1-21dc3c638f66>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mgoogle\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcolab\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mfiles\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0muploaded\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mfiles\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mupload\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;32m/usr/local/lib/python3.6/dist-packages/google/colab/files.py\u001b[0m in \u001b[0;36mupload\u001b[0;34m()\u001b[0m\n\u001b[1;32m     75\u001b[0m     result = _output.eval_js(\n\u001b[1;32m     76\u001b[0m         'google.colab._files._uploadFilesContinue(\"{output_id}\")'.format(\n\u001b[0;32m---> 77\u001b[0;31m             output_id=output_id))\n\u001b[0m\u001b[1;32m     78\u001b[0m     \u001b[0;32mif\u001b[0m \u001b[0mresult\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'action'\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m!=\u001b[0m \u001b[0;34m'append'\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     79\u001b[0m       \u001b[0;31m# JS side uses a generator of promises to process all of the files- some\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.6/dist-packages/google/colab/output/_js.py\u001b[0m in \u001b[0;36meval_js\u001b[0;34m(script, ignore_result)\u001b[0m\n\u001b[1;32m     37\u001b[0m   \u001b[0;32mif\u001b[0m \u001b[0mignore_result\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     38\u001b[0m     \u001b[0;32mreturn\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 39\u001b[0;31m   \u001b[0;32mreturn\u001b[0m \u001b[0m_message\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mread_reply_from_input\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mrequest_id\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     40\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     41\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.6/dist-packages/google/colab/_message.py\u001b[0m in \u001b[0;36mread_reply_from_input\u001b[0;34m(message_id, timeout_sec)\u001b[0m\n\u001b[1;32m     99\u001b[0m     \u001b[0mreply\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0m_read_next_input_message\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    100\u001b[0m     \u001b[0;32mif\u001b[0m \u001b[0mreply\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0m_NOT_READY\u001b[0m \u001b[0;32mor\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0misinstance\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mreply\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mdict\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 101\u001b[0;31m       \u001b[0mtime\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msleep\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m0.025\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    102\u001b[0m       \u001b[0;32mcontinue\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    103\u001b[0m     if (reply.get('type') == 'colab_reply' and\n",
+            "\u001b[0;31mKeyboardInterrupt\u001b[0m: "
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "MbGYadMHxnsL",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "import pandas as pd"
+      ],
+      "execution_count": 2,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "zwUjk49XCyxJ",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 54
+        },
+        "outputId": "4bac5373-8d8d-41d6-b647-a1ac5520a4e9"
+      },
+      "source": [
+        "!unzip 388_793053_bundle_archive.zip"
+      ],
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Archive:  388_793053_bundle_archive.zip\n",
+            "replace complete.csv? [y]es, [n]o, [A]ll, [N]one, [r]ename: "
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "FmtmzlzSC1ry",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "import pandas as pd\n"
+      ],
+      "execution_count": 5,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "plwaVV0xw28B",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df1 = pd.read_csv('https://raw.githubusercontent.com/helderc/NUFORC-Data-Scraping/master/ufon_raw_2020-01-18.csv',nrows=38320)"
+      ],
+      "execution_count": 6,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "lq6uAhhyDHVL",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 74
+        },
+        "outputId": "cc3b04fe-0f39-436b-b3a4-a03c99d0fe90"
+      },
+      "source": [
+        "df = pd.read_csv('scrubbed.csv')\n",
+        "#df1 = pd.read_csv('complete.csv')"
+      ],
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.6/dist-packages/IPython/core/interactiveshell.py:2718: DtypeWarning: Columns (5,9) have mixed types.Specify dtype option on import or set low_memory=False.\n",
+            "  interactivity=interactivity, compiler=compiler, result=result)\n"
+          ],
+          "name": "stderr"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Jw80ZWfMW-R9",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df = df[~df['country'].astype(str).str.contains('gb')]\n",
+        "df = df[~df['country'].astype(str).str.contains('ca')]\n",
+        "df = df[~df['country'].astype(str).str.contains('au')]\n",
+        "df = df[~df['country'].astype(str).str.contains('de')]"
+      ],
+      "execution_count": 8,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "nY-8Az3PNg-7",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df = df.drop(columns=['country','comments'])"
+      ],
+      "execution_count": 9,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "xEox8dxD8A6L",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df = df.drop(columns=['duration (seconds)'])"
+      ],
+      "execution_count": 10,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "4Fvt6V7S2fUN",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 78
+        },
+        "outputId": "71c16422-0944-40e1-bfad-1dc95262e7bd"
+      },
+      "source": [
+        "df.head(1)"
+      ],
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>datetime</th>\n",
+              "      <th>city</th>\n",
+              "      <th>state</th>\n",
+              "      <th>shape</th>\n",
+              "      <th>duration (hours/min)</th>\n",
+              "      <th>date posted</th>\n",
+              "      <th>latitude</th>\n",
+              "      <th>longitude</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>10/10/1949 20:30</td>\n",
+              "      <td>san marcos</td>\n",
+              "      <td>tx</td>\n",
+              "      <td>cylinder</td>\n",
+              "      <td>45 minutes</td>\n",
+              "      <td>4/27/2004</td>\n",
+              "      <td>29.8830556</td>\n",
+              "      <td>-97.941111</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "           datetime        city state  ... date posted    latitude longitude \n",
+              "0  10/10/1949 20:30  san marcos    tx  ...   4/27/2004  29.8830556 -97.941111\n",
+              "\n",
+              "[1 rows x 8 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 11
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Mld_YmsAFGIE",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "from datetime import timedelta\n",
+        "import pandas as pd\n",
+        "df['datetime'] = df['datetime'].str.replace('24:00', '0:00')"
+      ],
+      "execution_count": 12,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_8QuNY5mFmEN",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df['datetime'] = pd.to_datetime(df['datetime'], infer_datetime_format=True)"
+      ],
+      "execution_count": 13,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Dtctf4MqFmC8",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df['month'] = df['datetime'].dt.month\n",
+        "df['year'] = df['datetime'].dt.year\n",
+        "df['hour'] = df['datetime'].dt.hour"
+      ],
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "68lzce6SFl_2",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 113
+        },
+        "outputId": "79bfdb74-3108-469b-aae1-ecd0431bc0f5"
+      },
+      "source": [
+        "df.head(1)"
+      ],
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>datetime</th>\n",
+              "      <th>city</th>\n",
+              "      <th>state</th>\n",
+              "      <th>shape</th>\n",
+              "      <th>duration (hours/min)</th>\n",
+              "      <th>date posted</th>\n",
+              "      <th>latitude</th>\n",
+              "      <th>longitude</th>\n",
+              "      <th>month</th>\n",
+              "      <th>year</th>\n",
+              "      <th>hour</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>1949-10-10 20:30:00</td>\n",
+              "      <td>san marcos</td>\n",
+              "      <td>tx</td>\n",
+              "      <td>cylinder</td>\n",
+              "      <td>45 minutes</td>\n",
+              "      <td>4/27/2004</td>\n",
+              "      <td>29.8830556</td>\n",
+              "      <td>-97.941111</td>\n",
+              "      <td>10</td>\n",
+              "      <td>1949</td>\n",
+              "      <td>20</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "             datetime        city state  ... month  year hour\n",
+              "0 1949-10-10 20:30:00  san marcos    tx  ...    10  1949   20\n",
+              "\n",
+              "[1 rows x 11 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 15
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "3OoEO7xEnXFf",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "7249859e-4c7d-4099-a8b6-a84e393b5c1c"
+      },
+      "source": [
+        "df1['Date / Time'][1]"
+      ],
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "'12/22/19 22:15'"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 16
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "3n13yJhfnlAh",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df1['date'] = pd.to_datetime(df1['Date / Time'], errors='coerce')"
+      ],
+      "execution_count": 17,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Mtz2ACs_oDWi",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 113
+        },
+        "outputId": "e4bad4d1-1747-44d2-9093-5a366cbbfff3"
+      },
+      "source": [
+        "df1.head(1)"
+      ],
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Date / Time</th>\n",
+              "      <th>City</th>\n",
+              "      <th>State</th>\n",
+              "      <th>Shape</th>\n",
+              "      <th>Duration</th>\n",
+              "      <th>Summary</th>\n",
+              "      <th>Posted</th>\n",
+              "      <th>date</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>12/22/19 23:00</td>\n",
+              "      <td>Clarkston</td>\n",
+              "      <td>MI</td>\n",
+              "      <td>Circle</td>\n",
+              "      <td>5 minutes</td>\n",
+              "      <td>7 white lights seen to the W side of the state...</td>\n",
+              "      <td>12/22/19</td>\n",
+              "      <td>2019-12-22 23:00:00</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "      Date / Time       City  ...    Posted                date\n",
+              "0  12/22/19 23:00  Clarkston  ...  12/22/19 2019-12-22 23:00:00\n",
+              "\n",
+              "[1 rows x 8 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 18
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "dHTrSzO7Wg0A",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df1['month'] = df1['date'].dt.month\n",
+        "df1['year'] = df1['date'].dt.year\n",
+        "df1['hour'] = df1['date'].dt.hour"
+      ],
+      "execution_count": 19,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "2T8VM08EnlJg",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df1.rename({'date': 'datetime'}, axis=1, inplace=True)"
+      ],
+      "execution_count": 20,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "35W_OpHVnlTm",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 753
+        },
+        "outputId": "0448f188-d6f9-419d-d677-4d80bef840aa"
+      },
+      "source": [
+        "df1.drop(['Date / Time'], axis=1)"
+      ],
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>City</th>\n",
+              "      <th>State</th>\n",
+              "      <th>Shape</th>\n",
+              "      <th>Duration</th>\n",
+              "      <th>Summary</th>\n",
+              "      <th>Posted</th>\n",
+              "      <th>datetime</th>\n",
+              "      <th>month</th>\n",
+              "      <th>year</th>\n",
+              "      <th>hour</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>Clarkston</td>\n",
+              "      <td>MI</td>\n",
+              "      <td>Circle</td>\n",
+              "      <td>5 minutes</td>\n",
+              "      <td>7 white lights seen to the W side of the state...</td>\n",
+              "      <td>12/22/19</td>\n",
+              "      <td>2019-12-22 23:00:00</td>\n",
+              "      <td>12.0</td>\n",
+              "      <td>2019.0</td>\n",
+              "      <td>23.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>Kennett Square</td>\n",
+              "      <td>PA</td>\n",
+              "      <td>Triangle</td>\n",
+              "      <td>3min</td>\n",
+              "      <td>Witness to triangle style craft. View was from...</td>\n",
+              "      <td>12/22/19</td>\n",
+              "      <td>2019-12-22 22:15:00</td>\n",
+              "      <td>12.0</td>\n",
+              "      <td>2019.0</td>\n",
+              "      <td>22.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>Bethlehem</td>\n",
+              "      <td>PA</td>\n",
+              "      <td>Unknown</td>\n",
+              "      <td>Hours</td>\n",
+              "      <td>Hello, My wife and I been seeing these objects...</td>\n",
+              "      <td>12/22/19</td>\n",
+              "      <td>2019-12-22 21:00:00</td>\n",
+              "      <td>12.0</td>\n",
+              "      <td>2019.0</td>\n",
+              "      <td>21.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>Fishkill</td>\n",
+              "      <td>NY</td>\n",
+              "      <td>Disk</td>\n",
+              "      <td>1 minute</td>\n",
+              "      <td>Disc Shape Hovering,  ((Starlink satellites?))</td>\n",
+              "      <td>12/22/19</td>\n",
+              "      <td>2019-12-22 20:35:00</td>\n",
+              "      <td>12.0</td>\n",
+              "      <td>2019.0</td>\n",
+              "      <td>20.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>Strathroy (Canada)</td>\n",
+              "      <td>ON</td>\n",
+              "      <td>Light</td>\n",
+              "      <td>15 minutes</td>\n",
+              "      <td>Chain of white lights following each other upw...</td>\n",
+              "      <td>12/22/19</td>\n",
+              "      <td>2019-12-22 20:00:00</td>\n",
+              "      <td>12.0</td>\n",
+              "      <td>2019.0</td>\n",
+              "      <td>20.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>...</th>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>38315</th>\n",
+              "      <td>Eau Claire</td>\n",
+              "      <td>WI</td>\n",
+              "      <td>Unknown</td>\n",
+              "      <td>30 minutes</td>\n",
+              "      <td>Orange lights appear over Eau Claire, WI on Se...</td>\n",
+              "      <td>9/30/13</td>\n",
+              "      <td>2013-09-10 22:15:00</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>2013.0</td>\n",
+              "      <td>22.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>38316</th>\n",
+              "      <td>Buxton</td>\n",
+              "      <td>NC</td>\n",
+              "      <td>Rectangle</td>\n",
+              "      <td>1:00</td>\n",
+              "      <td>Bright orange rectangle in three connected equ...</td>\n",
+              "      <td>9/30/13</td>\n",
+              "      <td>2013-09-10 22:00:00</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>2013.0</td>\n",
+              "      <td>22.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>38317</th>\n",
+              "      <td>Pine Mountain Club</td>\n",
+              "      <td>CA</td>\n",
+              "      <td>Unknown</td>\n",
+              "      <td>30 seconds</td>\n",
+              "      <td>Circle of light in the night sky that shrank d...</td>\n",
+              "      <td>9/30/13</td>\n",
+              "      <td>2013-09-10 20:00:00</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>2013.0</td>\n",
+              "      <td>20.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>38318</th>\n",
+              "      <td>St. Helena</td>\n",
+              "      <td>CA</td>\n",
+              "      <td>Flash</td>\n",
+              "      <td>1 second</td>\n",
+              "      <td>St Helena CA sighting (flash of light across t...</td>\n",
+              "      <td>11/20/13</td>\n",
+              "      <td>2013-09-10 20:00:00</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>2013.0</td>\n",
+              "      <td>20.0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>38319</th>\n",
+              "      <td>Beavercreek</td>\n",
+              "      <td>OH</td>\n",
+              "      <td>Circle</td>\n",
+              "      <td>15</td>\n",
+              "      <td>A round object with very bright red green and ...</td>\n",
+              "      <td>9/30/13</td>\n",
+              "      <td>2013-09-10 19:35:00</td>\n",
+              "      <td>9.0</td>\n",
+              "      <td>2013.0</td>\n",
+              "      <td>19.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "<p>38320 rows × 10 columns</p>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "                     City State      Shape  ... month    year  hour\n",
+              "0               Clarkston    MI     Circle  ...  12.0  2019.0  23.0\n",
+              "1          Kennett Square    PA   Triangle  ...  12.0  2019.0  22.0\n",
+              "2               Bethlehem    PA    Unknown  ...  12.0  2019.0  21.0\n",
+              "3                Fishkill    NY       Disk  ...  12.0  2019.0  20.0\n",
+              "4      Strathroy (Canada)    ON      Light  ...  12.0  2019.0  20.0\n",
+              "...                   ...   ...        ...  ...   ...     ...   ...\n",
+              "38315          Eau Claire    WI    Unknown  ...   9.0  2013.0  22.0\n",
+              "38316              Buxton    NC  Rectangle  ...   9.0  2013.0  22.0\n",
+              "38317  Pine Mountain Club    CA    Unknown  ...   9.0  2013.0  20.0\n",
+              "38318          St. Helena    CA      Flash  ...   9.0  2013.0  20.0\n",
+              "38319         Beavercreek    OH     Circle  ...   9.0  2013.0  19.0\n",
+              "\n",
+              "[38320 rows x 10 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 21
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "dLhM72uVsILA",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df1 = df1.drop(columns=['Date / Time','Summary'])"
+      ],
+      "execution_count": 22,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "N4mSJ4MZtarG",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df1['datetime'] = df1['datetime'].dt.date"
+      ],
+      "execution_count": 23,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "QIob1zCmvFIE",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df['datetime'] = df['datetime'].dt.date"
+      ],
+      "execution_count": 24,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "2YjHjNSy7JoJ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df = df.rename(columns={'city': 'City', 'shape': 'Shape', 'duration (hours/min)':'Duration'})"
+      ],
+      "execution_count": 25,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Q6ZjoRzu7Jt9",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df = df.rename(columns={'state': 'State', 'date posted': 'Date_Posted'})"
+      ],
+      "execution_count": 26,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Ac7j4Ytu9hqQ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df = df.rename(columns={'Date_Posted':'Posted'})"
+      ],
+      "execution_count": 27,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Kj_rDNXP7J0D",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df1 = df1.reindex(columns=['datetime','City','State','Shape','Duration','Posted','month','year','hour'])"
+      ],
+      "execution_count": 28,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_92LrBu-8wAL",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df['State'] = df['State'].str.upper()"
+      ],
+      "execution_count": 29,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "XuUdERr5AO-X",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df['City'] = df['City'].str.title()"
+      ],
+      "execution_count": 30,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "zmXiYoo9EDTS",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "vc = pd.concat([df1, df], axis=0)"
+      ],
+      "execution_count": 31,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Wl1NAC3NFNuw",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "misc = vc.loc[:, vc.columns.intersection(['Shape','Duration'])]"
+      ],
+      "execution_count": 32,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "TK38xRudFpds",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "time = vc.loc[:, vc.columns.intersection(['datetime','posted','month','year','hour','Duration'])]"
+      ],
+      "execution_count": 33,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hA86GnP5sIGg",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 78
+        },
+        "outputId": "630acb60-c6aa-418c-838e-b43d10294dfb"
+      },
+      "source": [
+        "df1.head(1)"
+      ],
+      "execution_count": 34,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>datetime</th>\n",
+              "      <th>City</th>\n",
+              "      <th>State</th>\n",
+              "      <th>Shape</th>\n",
+              "      <th>Duration</th>\n",
+              "      <th>Posted</th>\n",
+              "      <th>month</th>\n",
+              "      <th>year</th>\n",
+              "      <th>hour</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2019-12-22</td>\n",
+              "      <td>Clarkston</td>\n",
+              "      <td>MI</td>\n",
+              "      <td>Circle</td>\n",
+              "      <td>5 minutes</td>\n",
+              "      <td>12/22/19</td>\n",
+              "      <td>12.0</td>\n",
+              "      <td>2019.0</td>\n",
+              "      <td>23.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "     datetime       City State   Shape  ...    Posted month    year  hour\n",
+              "0  2019-12-22  Clarkston    MI  Circle  ...  12/22/19  12.0  2019.0  23.0\n",
+              "\n",
+              "[1 rows x 9 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 34
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Cgc2846qGx36",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df2 = df1"
+      ],
+      "execution_count": 71,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5AwdxdKHJchQ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df2.dropna(subset = [\"City\"], inplace=True)"
+      ],
+      "execution_count": 72,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "t36I9d1SJi35",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "df2.dropna(subset = [\"State\"], inplace=True)"
+      ],
+      "execution_count": 73,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "NFn8djkJHNpa",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 78
+        },
+        "outputId": "54cc1945-f7c0-44b9-c668-9c6c36ac1cc0"
+      },
+      "source": [
+        "df2.head(1)"
+      ],
+      "execution_count": 74,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>datetime</th>\n",
+              "      <th>City</th>\n",
+              "      <th>State</th>\n",
+              "      <th>Shape</th>\n",
+              "      <th>Duration</th>\n",
+              "      <th>Posted</th>\n",
+              "      <th>month</th>\n",
+              "      <th>year</th>\n",
+              "      <th>hour</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>2019-12-22</td>\n",
+              "      <td>Clarkston</td>\n",
+              "      <td>MI</td>\n",
+              "      <td>Circle</td>\n",
+              "      <td>5 minutes</td>\n",
+              "      <td>12/22/19</td>\n",
+              "      <td>12.0</td>\n",
+              "      <td>2019.0</td>\n",
+              "      <td>23.0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "     datetime       City State   Shape  ...    Posted month    year  hour\n",
+              "0  2019-12-22  Clarkston    MI  Circle  ...  12/22/19  12.0  2019.0  23.0\n",
+              "\n",
+              "[1 rows x 9 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 74
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "SLKfwcoWfkn9",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "8xTRRbHmfkkR",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "NHYUJ4ctfkiV",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Z-ik-aZKfkhN",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Z9ok_emCfkdV",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "jnwJ1DGWfkbn",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "wnXQbVohfkaA",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "X556BfY7fkV3",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "TqP1sNazfkUJ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "KrUJkM_nfkSr",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "jkGtTJczfkOY",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "UlSA3sG-GAXt",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "397d8177-d094-4586-ea48-e49a26d55a55"
+      },
+      "source": [
+        "df2['City'].shape"
+      ],
+      "execution_count": 68,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(36973,)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 68
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_IESP9iCVrJf",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "08fa1e9d-402b-409d-d1f8-589e14e4cf4f"
+      },
+      "source": [
+        "df2['State'].shape"
+      ],
+      "execution_count": 69,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(36973,)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 69
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "nn_Qhqd5xGjd",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 255
+        },
+        "outputId": "3ce39d78-b4f1-4353-a964-7af6bfdfc646"
+      },
+      "source": [
+        "!pip install opencage"
+      ],
+      "execution_count": 41,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Requirement already satisfied: opencage in /usr/local/lib/python3.6/dist-packages (1.2.1)\n",
+            "Requirement already satisfied: backoff>=1.10.0 in /usr/local/lib/python3.6/dist-packages (from opencage) (1.10.0)\n",
+            "Requirement already satisfied: Requests>=2.2.0 in /usr/local/lib/python3.6/dist-packages (from opencage) (2.23.0)\n",
+            "Requirement already satisfied: pyopenssl>=0.15.1 in /usr/local/lib/python3.6/dist-packages (from opencage) (19.1.0)\n",
+            "Requirement already satisfied: six>=1.4.0 in /usr/local/lib/python3.6/dist-packages (from opencage) (1.12.0)\n",
+            "Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /usr/local/lib/python3.6/dist-packages (from Requests>=2.2.0->opencage) (1.24.3)\n",
+            "Requirement already satisfied: chardet<4,>=3.0.2 in /usr/local/lib/python3.6/dist-packages (from Requests>=2.2.0->opencage) (3.0.4)\n",
+            "Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.6/dist-packages (from Requests>=2.2.0->opencage) (2020.4.5.2)\n",
+            "Requirement already satisfied: idna<3,>=2.5 in /usr/local/lib/python3.6/dist-packages (from Requests>=2.2.0->opencage) (2.9)\n",
+            "Requirement already satisfied: cryptography>=2.8 in /usr/local/lib/python3.6/dist-packages (from pyopenssl>=0.15.1->opencage) (2.9.2)\n",
+            "Requirement already satisfied: cffi!=1.11.3,>=1.8 in /usr/local/lib/python3.6/dist-packages (from cryptography>=2.8->pyopenssl>=0.15.1->opencage) (1.14.0)\n",
+            "Requirement already satisfied: pycparser in /usr/local/lib/python3.6/dist-packages (from cffi!=1.11.3,>=1.8->cryptography>=2.8->pyopenssl>=0.15.1->opencage) (2.20)\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "oE7JzuxuyYhm",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "from opencage.geocoder import OpenCageGeocode"
+      ],
+      "execution_count": 45,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "NZ0zvTsFXxWc",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 55
+        },
+        "outputId": "47ec4ea7-80a5-4916-8fb0-098bd946d6e6"
+      },
+      "source": [
+        "key = '03a16e7439ad47bdb2e8887834ec22a6'\n",
+        "\t\n",
+        "geocoder = OpenCageGeocode(key)\n",
+        "\t\n",
+        "query = 'America'  \n",
+        "\t\n",
+        "results = geocoder.geocode(query)\n",
+        "\t\n",
+        "print (results)\n"
+      ],
+      "execution_count": 52,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[{'annotations': {'DMS': {'lat': \"51° 26' 51.73332'' N\", 'lng': \"5° 57' 57.84948'' E\"}, 'MGRS': '31UGT0609803786', 'Maidenhead': 'JO21xk57wk', 'Mercator': {'x': 664139.795, 'y': 6667435.736}, 'OSM': {'edit_url': 'https://www.openstreetmap.org/edit?relation=1418612#map=17/51.44770/5.96607', 'note_url': 'https://www.openstreetmap.org/note/new#map=17/51.44770/5.96607&layers=N', 'url': 'https://www.openstreetmap.org/?mlat=51.44770&mlon=5.96607#map=17/51.44770/5.96607'}, 'UN_M49': {'regions': {'EUROPE': '150', 'NL': '528', 'WESTERN_EUROPE': '155', 'WORLD': '001'}, 'statistical_groupings': ['MEDC']}, 'callingcode': 31, 'currency': {'alternate_symbols': [], 'decimal_mark': ',', 'html_entity': '&#x20AC;', 'iso_code': 'EUR', 'iso_numeric': '978', 'name': 'Euro', 'smallest_denomination': 1, 'subunit': 'Cent', 'subunit_to_unit': 100, 'symbol': '€', 'symbol_first': 1, 'thousands_separator': '.'}, 'flag': '🇳🇱', 'geohash': 'u1hhxvb2e7pdqjf4ku4z', 'qibla': 126.01, 'roadinfo': {'drive_on': 'right', 'speed_in': 'km/h'}, 'sun': {'rise': {'apparent': 1592796060, 'astronomical': 0, 'civil': 1592793180, 'nautical': 1592788740}, 'set': {'apparent': 1592855760, 'astronomical': 0, 'civil': 1592858580, 'nautical': 1592863020}}, 'timezone': {'name': 'Europe/Amsterdam', 'now_in_dst': 1, 'offset_sec': 7200, 'offset_string': '+0200', 'short_name': 'CEST'}, 'what3words': {'words': 'voluptuous.slops.enlarging'}, 'wikidata': 'Q463100'}, 'bounds': {'northeast': {'lat': 51.471403, 'lng': 6.013728}, 'southwest': {'lat': 51.418899, 'lng': 5.9163824}}, 'components': {'ISO_3166-1_alpha-2': 'NL', 'ISO_3166-1_alpha-3': 'NLD', '_category': 'place', '_type': 'neighbourhood', 'city': 'Horst aan de Maas', 'continent': 'Europe', 'country': 'The Netherlands', 'country_code': 'nl', 'political_union': 'European Union', 'state': 'Limburg', 'state_code': 'LI', 'suburb': 'America'}, 'confidence': 7, 'formatted': 'America, Horst aan de Maas, Limburg, The Netherlands', 'geometry': {'lat': 51.4477037, 'lng': 5.9660693}}, {'annotations': {'DMS': {'lat': \"4° 49' 4.94760'' N\", 'lng': \"75° 41' 19.85280'' W\"}, 'MGRS': '18NVL2361532589', 'Maidenhead': 'FJ24dt76ih', 'Mercator': {'x': -8425644.02, 'y': 533388.783}, 'OSM': {'edit_url': 'https://www.openstreetmap.org/edit?relation=7762944#map=17/4.81804/-75.68885', 'note_url': 'https://www.openstreetmap.org/note/new#map=17/4.81804/-75.68885&layers=N', 'url': 'https://www.openstreetmap.org/?mlat=4.81804&mlon=-75.68885#map=17/4.81804/-75.68885'}, 'UN_M49': {'regions': {'AMERICAS': '019', 'CO': '170', 'LATIN_AMERICA': '419', 'SOUTH_AMERICA': '005', 'WORLD': '001'}, 'statistical_groupings': ['LEDC']}, 'callingcode': 57, 'currency': {'alternate_symbols': ['COL$'], 'decimal_mark': ',', 'disambiguate_symbol': 'COL$', 'html_entity': '&#36;', 'iso_code': 'COP', 'iso_numeric': '170', 'name': 'Colombian Peso', 'smallest_denomination': 20, 'subunit': 'Centavo', 'subunit_to_unit': 100, 'symbol': '$', 'symbol_first': 1, 'thousands_separator': '.'}, 'flag': '🇨🇴', 'geohash': 'd2f5mtj545bmg82pdy6s', 'qibla': 64.67, 'roadinfo': {'drive_on': 'right', 'speed_in': 'km/h'}, 'sun': {'rise': {'apparent': 1592823240, 'astronomical': 1592818680, 'civil': 1592821860, 'nautical': 1592820300}, 'set': {'apparent': 1592867760, 'astronomical': 1592785920, 'civil': 1592869140, 'nautical': 1592784300}}, 'timezone': {'name': 'America/Bogota', 'now_in_dst': 0, 'offset_sec': -18000, 'offset_string': '-0500', 'short_name': '-05'}, 'what3words': {'words': 'vital.homes.ignoring'}}, 'bounds': {'northeast': {'lat': 4.8194642, 'lng': -75.6872277}, 'southwest': {'lat': 4.8165393, 'lng': -75.6911194}}, 'components': {'ISO_3166-1_alpha-2': 'CO', 'ISO_3166-1_alpha-3': 'COL', '_category': 'place', '_type': 'neighbourhood', 'city': 'Río Otún', 'city_district': 'America', 'continent': 'South America', 'country': 'Colombia', 'country_code': 'co', 'county': 'Perimetro Urbano Pereira', 'state': 'Risaralda', 'state_code': 'RIS'}, 'confidence': 9, 'formatted': 'America, Río Otún, Perimetro Urbano Pereira, Colombia', 'geometry': {'lat': 4.818041, 'lng': -75.688848}}, {'annotations': {'DMS': {'lat': \"51° 26' 13.73388'' N\", 'lng': \"5° 58' 47.64036'' E\"}, 'MGRS': '31UGT0710602652', 'Maidenhead': 'JO21xk74ov', 'Mercator': {'x': 665679.434, 'y': 6665555.507}, 'OSM': {'edit_url': 'https://www.openstreetmap.org/edit?node=7293355527#map=17/51.43715/5.97990', 'note_url': 'https://www.openstreetmap.org/note/new#map=17/51.43715/5.97990&layers=N', 'url': 'https://www.openstreetmap.org/?mlat=51.43715&mlon=5.97990#map=17/51.43715/5.97990'}, 'UN_M49': {'regions': {'EUROPE': '150', 'NL': '528', 'WESTERN_EUROPE': '155', 'WORLD': '001'}, 'statistical_groupings': ['MEDC']}, 'callingcode': 31, 'currency': {'alternate_symbols': [], 'decimal_mark': ',', 'html_entity': '&#x20AC;', 'iso_code': 'EUR', 'iso_numeric': '978', 'name': 'Euro', 'smallest_denomination': 1, 'subunit': 'Cent', 'subunit_to_unit': 100, 'symbol': '€', 'symbol_first': 1, 'thousands_separator': '.'}, 'flag': '🇳🇱', 'geohash': 'u1hk85f7jg2tq4ps7b85', 'qibla': 126.01, 'roadinfo': {'drive_on': 'right', 'speed_in': 'km/h'}, 'sun': {'rise': {'apparent': 1592796060, 'astronomical': 0, 'civil': 1592793180, 'nautical': 1592788740}, 'set': {'apparent': 1592855760, 'astronomical': 0, 'civil': 1592858580, 'nautical': 1592863020}}, 'timezone': {'name': 'Europe/Amsterdam', 'now_in_dst': 1, 'offset_sec': 7200, 'offset_string': '+0200', 'short_name': 'CEST'}, 'what3words': {'words': 'equally.bunnies.multiple'}}, 'bounds': {'northeast': {'lat': 51.4571483, 'lng': 5.9999001}, 'southwest': {'lat': 51.4171483, 'lng': 5.9599001}}, 'components': {'ISO_3166-1_alpha-2': 'NL', 'ISO_3166-1_alpha-3': 'NLD', '_category': 'place', '_type': 'village', 'continent': 'Europe', 'country': 'The Netherlands', 'country_code': 'nl', 'political_union': 'European Union', 'postcode': '5966PB', 'state': 'Limburg', 'state_code': 'LI', 'village': 'America'}, 'confidence': 7, 'formatted': '5966PB America, The Netherlands', 'geometry': {'lat': 51.4371483, 'lng': 5.9799001}}, {'annotations': {'DMS': {'lat': \"28° 38' 2.40000'' N\", 'lng': \"111° 36' 13.79988'' W\"}, 'MGRS': '12RVS4098067586', 'Maidenhead': 'DL48ep72md', 'Mercator': {'x': -12423681.894, 'y': 3308672.634}, 'OSM': {'edit_url': 'https://www.openstreetmap.org/edit?node=336147316#map=17/28.63400/-111.60383', 'note_url': 'https://www.openstreetmap.org/note/new#map=17/28.63400/-111.60383&layers=N', 'url': 'https://www.openstreetmap.org/?mlat=28.63400&mlon=-111.60383#map=17/28.63400/-111.60383'}, 'UN_M49': {'regions': {'AMERICAS': '019', 'CENTRAL_AMERICA': '013', 'LATIN_AMERICA': '419', 'MX': '484', 'WORLD': '001'}, 'statistical_groupings': ['LEDC']}, 'callingcode': 52, 'currency': {'alternate_symbols': ['MEX$'], 'decimal_mark': '.', 'disambiguate_symbol': 'MEX$', 'html_entity': '$', 'iso_code': 'MXN', 'iso_numeric': '484', 'name': 'Mexican Peso', 'smallest_denomination': 5, 'subunit': 'Centavo', 'subunit_to_unit': 100, 'symbol': '$', 'symbol_first': 1, 'thousands_separator': ','}, 'flag': '🇲🇽', 'geohash': '9t0dukst4hqr62s5kmg5', 'qibla': 32.0, 'roadinfo': {'drive_on': 'right', 'speed_in': 'km/h'}, 'sun': {'rise': {'apparent': 1592829060, 'astronomical': 1592823420, 'civil': 1592827440, 'nautical': 1592825460}, 'set': {'apparent': 1592792820, 'astronomical': 1592798460, 'civil': 1592794380, 'nautical': 1592796360}}, 'timezone': {'name': 'America/Hermosillo', 'now_in_dst': 0, 'offset_sec': -25200, 'offset_string': '-0700', 'short_name': 'MST'}, 'what3words': {'words': 'presently.razor.evolved'}}, 'bounds': {'northeast': {'lat': 28.654, 'lng': -111.5838333}, 'southwest': {'lat': 28.614, 'lng': -111.6238333}}, 'components': {'ISO_3166-1_alpha-2': 'MX', 'ISO_3166-1_alpha-3': 'MEX', '_category': 'place', '_type': 'village', 'continent': 'North America', 'country': 'Mexico', 'country_code': 'mx', 'county': 'Hermosillo', 'state': 'Sonora', 'state_code': 'SON', 'village': 'America'}, 'confidence': 7, 'formatted': 'America, Hermosillo, Mexico', 'geometry': {'lat': 28.634, 'lng': -111.6038333}}, {'annotations': {'DMS': {'lat': \"0° 38' 26.69388'' N\", 'lng': \"47° 18' 36.13788'' W\"}, 'MGRS': '23MKV4289629120', 'Maidenhead': 'GI69ii26tf', 'Mercator': {'x': -5266529.373, 'y': -70851.776}, 'OSM': {'edit_url': 'https://www.openstreetmap.org/edit?node=4603086593#map=17/-0.64075/-47.31004', 'note_url': 'https://www.openstreetmap.org/note/new#map=17/-0.64075/-47.31004&layers=N', 'url': 'https://www.openstreetmap.org/?mlat=-0.64075&mlon=-47.31004#map=17/-0.64075/-47.31004'}, 'UN_M49': {'regions': {'AMERICAS': '019', 'BR': '076', 'LATIN_AMERICA': '419', 'SOUTH_AMERICA': '005', 'WORLD': '001'}, 'statistical_groupings': ['LEDC']}, 'callingcode': 55, 'currency': {'decimal_mark': ',', 'html_entity': 'R$', 'iso_code': 'BRL', 'iso_numeric': '986', 'name': 'Brazilian Real', 'smallest_denomination': 5, 'subunit': 'Centavo', 'subunit_to_unit': 100, 'symbol': 'R$', 'symbol_first': 1, 'thousands_separator': '.'}, 'flag': '🇧🇷', 'geohash': '6zyk77mgk5yee0m1kcmc', 'qibla': 68.53, 'roadinfo': {'drive_on': 'right', 'speed_in': 'km/h'}, 'sun': {'rise': {'apparent': 1592817000, 'astronomical': 1592812500, 'civil': 1592815620, 'nautical': 1592814060}, 'set': {'apparent': 1592860380, 'astronomical': 1592864880, 'civil': 1592861700, 'nautical': 1592863320}}, 'timezone': {'name': 'America/Belem', 'now_in_dst': 0, 'offset_sec': -10800, 'offset_string': '-0300', 'short_name': '-03'}, 'what3words': {'words': 'inconvenient.scary.beside'}}, 'bounds': {'northeast': {'lat': -0.6207483, 'lng': -47.2900383}, 'southwest': {'lat': -0.6607483, 'lng': -47.3300383}}, 'components': {'ISO_3166-1_alpha-2': 'BR', 'ISO_3166-1_alpha-3': 'BRA', '_category': 'place', '_type': 'village', 'city_district': 'Salinópolis', 'continent': 'South America', 'country': 'Brazil', 'country_code': 'br', 'county': 'Microrregião de Salgado', 'state': 'Pará', 'state_code': 'PA', 'state_district': 'Região Geográfica Intermediária de Breves', 'village': 'America'}, 'confidence': 7, 'formatted': 'Salinópolis, America, Microrregião de Salgado, Brazil', 'geometry': {'lat': -0.6407483, 'lng': -47.3100383}}, {'annotations': {'DMS': {'lat': \"14° 28' 4.79316'' S\", 'lng': \"70° 39' 9.75708'' W\"}, 'MGRS': '19LCD2186799872', 'Maidenhead': 'FH45qm17qq', 'Mercator': {'x': -7865023.734, 'y': -1617295.053}, 'OSM': {'edit_url': 'https://www.openstreetmap.org/edit?node=3641152621#map=17/-14.46800/-70.65271', 'note_url': 'https://www.openstreetmap.org/note/new#map=17/-14.46800/-70.65271&layers=N', 'url': 'https://www.openstreetmap.org/?mlat=-14.46800&mlon=-70.65271#map=17/-14.46800/-70.65271'}, 'UN_M49': {'regions': {'AMERICAS': '019', 'LATIN_AMERICA': '419', 'PE': '604', 'SOUTH_AMERICA': '005', 'WORLD': '001'}, 'statistical_groupings': ['LEDC']}, 'callingcode': 51, 'currency': {'alternate_symbols': [], 'decimal_mark': '.', 'html_entity': 'S/', 'iso_code': 'PEN', 'iso_numeric': '604', 'name': 'Peruvian Sol', 'smallest_denomination': 1, 'subunit': 'Céntimo', 'subunit_to_unit': 100, 'symbol': 'S/', 'symbol_first': 1, 'thousands_separator': ','}, 'flag': '🇵🇪', 'geohash': '6mmv8q0mb98vd59kkpb9', 'qibla': 72.66, 'roadinfo': {'drive_on': 'right', 'speed_in': 'km/h'}, 'sun': {'rise': {'apparent': 1592824080, 'astronomical': 1592819460, 'civil': 1592822640, 'nautical': 1592821080}, 'set': {'apparent': 1592864520, 'astronomical': 1592869080, 'civil': 1592865900, 'nautical': 1592867520}}, 'timezone': {'name': 'America/Lima', 'now_in_dst': 0, 'offset_sec': -18000, 'offset_string': '-0500', 'short_name': '-05'}, 'what3words': {'words': 'lifelong.tells.inspector'}}, 'bounds': {'northeast': {'lat': -14.4479981, 'lng': -70.6327103}, 'southwest': {'lat': -14.4879981, 'lng': -70.6727103}}, 'components': {'ISO_3166-1_alpha-2': 'PE', 'ISO_3166-1_alpha-3': 'PER', '_category': 'place', '_type': 'village', 'continent': 'South America', 'country': 'Peru', 'country_code': 'pe', 'region': 'Province of Melgar', 'state': 'Puno', 'state_code': 'PUN', 'village': 'America'}, 'confidence': 7, 'formatted': 'America, Puno, Peru', 'geometry': {'lat': -14.4679981, 'lng': -70.6527103}}, {'annotations': {'DMS': {'lat': \"6° 37' 20.28000'' N\", 'lng': \"8° 50' 3.12000'' E\"}, 'MGRS': '32NMN8167231998', 'Maidenhead': 'JJ46ko09ci', 'Mercator': {'x': 983418.646, 'y': 733913.714}, 'OSM': {'edit_url': 'https://www.openstreetmap.org/edit?node=501372636#map=17/6.62230/8.83420', 'note_url': 'https://www.openstreetmap.org/note/new#map=17/6.62230/8.83420&layers=N', 'url': 'https://www.openstreetmap.org/?mlat=6.62230&mlon=8.83420#map=17/6.62230/8.83420'}, 'UN_M49': {'regions': {'AFRICA': '002', 'NG': '566', 'SUB-SAHARAN_AFRICA': '202', 'WESTERN_AFRICA': '011', 'WORLD': '001'}, 'statistical_groupings': ['LEDC']}, 'callingcode': 234, 'currency': {'alternate_symbols': [], 'decimal_mark': '.', 'html_entity': '&#x20A6;', 'iso_code': 'NGN', 'iso_numeric': '566', 'name': 'Nigerian Naira', 'smallest_denomination': 50, 'subunit': 'Kobo', 'subunit_to_unit': 100, 'symbol': '₦', 'symbol_first': 1, 'thousands_separator': ','}, 'flag': '🇳🇬', 'geohash': 's1nm9j8cey0ynxq3wts2', 'qibla': 60.54, 'roadinfo': {'drive_on': 'right', 'speed_in': 'km/h'}, 'sun': {'rise': {'apparent': 1592802780, 'astronomical': 1592798160, 'civil': 1592801400, 'nautical': 1592799780}, 'set': {'apparent': 1592847660, 'astronomical': 1592852220, 'civil': 1592849040, 'nautical': 1592850600}}, 'timezone': {'name': 'Africa/Lagos', 'now_in_dst': 0, 'offset_sec': 3600, 'offset_string': '+0100', 'short_name': 'WAT'}, 'what3words': {'words': 'optimum.misaligned.sweeten'}}, 'bounds': {'northeast': {'lat': 6.6423, 'lng': 8.8542}, 'southwest': {'lat': 6.6023, 'lng': 8.8142}}, 'components': {'ISO_3166-1_alpha-2': 'NG', 'ISO_3166-1_alpha-3': 'NGA', '_category': 'place', '_type': 'village', 'continent': 'Africa', 'country': 'Nigeria', 'country_code': 'ng', 'county': 'Ogoja', 'state': 'Cross River', 'state_code': 'CR', 'village': 'America'}, 'confidence': 7, 'formatted': 'America, Ogoja, Nigeria', 'geometry': {'lat': 6.6223, 'lng': 8.8342}}, {'annotations': {'DMS': {'lat': \"53° 52' 37.50132'' N\", 'lng': \"1° 59' 1.87080'' W\"}, 'MGRS': '30UWE6680270324', 'Maidenhead': 'IO93av10wm', 'Mercator': {'x': -220841.506, 'y': 7112372.132}, 'OSM': {'edit_url': 'https://www.openstreetmap.org/edit?node=541436684#map=17/53.87708/-1.98385', 'note_url': 'https://www.openstreetmap.org/note/new#map=17/53.87708/-1.98385&layers=N', 'url': 'https://www.openstreetmap.org/?mlat=53.87708&mlon=-1.98385#map=17/53.87708/-1.98385'}, 'UN_M49': {'regions': {'EUROPE': '150', 'GB': '826', 'NORTHERN_EUROPE': '154', 'WORLD': '001'}, 'statistical_groupings': ['MEDC']}, 'callingcode': 44, 'currency': {'alternate_symbols': [], 'decimal_mark': '.', 'html_entity': '&#x00A3;', 'iso_code': 'GBP', 'iso_numeric': '826', 'name': 'British Pound', 'smallest_denomination': 1, 'subunit': 'Penny', 'subunit_to_unit': 100, 'symbol': '£', 'symbol_first': 1, 'thousands_separator': ','}, 'flag': '🇬🇧', 'geohash': 'gcwddb52ub7fzt4shcvt', 'qibla': 119.08, 'roadinfo': {'drive_on': 'left', 'speed_in': 'mph'}, 'sun': {'rise': {'apparent': 1592797080, 'astronomical': 0, 'civil': 1592793840, 'nautical': 1592787600}, 'set': {'apparent': 1592858520, 'astronomical': 0, 'civil': 1592861760, 'nautical': 1592868000}}, 'timezone': {'name': 'Europe/London', 'now_in_dst': 1, 'offset_sec': 3600, 'offset_string': '+0100', 'short_name': 'BST'}, 'what3words': {'words': 'ideals.uptown.goggles'}}, 'bounds': {'northeast': {'lat': 53.8870837, 'lng': -1.973853}, 'southwest': {'lat': 53.8670837, 'lng': -1.993853}}, 'components': {'ISO_3166-1_alpha-2': 'GB', 'ISO_3166-1_alpha-3': 'GBR', '_category': 'agriculture', '_type': 'farm', 'city': 'Craven', 'continent': 'Europe', 'country': 'United Kingdom', 'country_code': 'gb', 'county': 'North Yorkshire', 'county_code': 'NYK', 'farm': 'America', 'postcode': 'BD20 7BG', 'state': 'England', 'state_code': 'ENG', 'state_district': 'Yorkshire and the Humber'}, 'confidence': 8, 'formatted': 'America, Craven BD20 7BG, United Kingdom', 'geometry': {'lat': 53.8770837, 'lng': -1.983853}}, {'annotations': {'DMS': {'lat': \"33° 48' 55.40904'' N\", 'lng': \"94° 32' 54.75228'' W\"}, 'FIPS': {'county': '40089', 'state': '40'}, 'MGRS': '15SUT5668042765', 'Maidenhead': 'EM23rt45eq', 'Mercator': {'x': -10525095.584, 'y': 3980261.955}, 'OSM': {'edit_url': 'https://www.openstreetmap.org/edit?node=151444650#map=17/33.81539/-94.54854', 'note_url': 'https://www.openstreetmap.org/note/new#map=17/33.81539/-94.54854&layers=N', 'url': 'https://www.openstreetmap.org/?mlat=33.81539&mlon=-94.54854#map=17/33.81539/-94.54854'}, 'UN_M49': {'regions': {'AMERICAS': '019', 'NORTHERN_AMERICA': '021', 'US': '840', 'WORLD': '001'}, 'statistical_groupings': ['MEDC']}, 'callingcode': 1, 'currency': {'alternate_symbols': ['US$'], 'decimal_mark': '.', 'disambiguate_symbol': 'US$', 'html_entity': '$', 'iso_code': 'USD', 'iso_numeric': '840', 'name': 'United States Dollar', 'smallest_denomination': 1, 'subunit': 'Cent', 'subunit_to_unit': 100, 'symbol': '$', 'symbol_first': 1, 'thousands_separator': ','}, 'flag': '🇺🇸', 'geohash': '9yhb27zugmc4chwsd9ht', 'qibla': 44.98, 'roadinfo': {'drive_on': 'right', 'speed_in': 'mph'}, 'sun': {'rise': {'apparent': 1592824140, 'astronomical': 1592817960, 'civil': 1592822400, 'nautical': 1592820300}, 'set': {'apparent': 1592789460, 'astronomical': 1592795700, 'civil': 1592791200, 'nautical': 1592793360}}, 'timezone': {'name': 'America/Chicago', 'now_in_dst': 1, 'offset_sec': -18000, 'offset_string': '-0500', 'short_name': 'CDT'}, 'what3words': {'words': 'agile.triumph.shops'}}, 'bounds': {'northeast': {'lat': 33.8353914, 'lng': -94.5285423}, 'southwest': {'lat': 33.7953914, 'lng': -94.5685423}}, 'components': {'ISO_3166-1_alpha-2': 'US', 'ISO_3166-1_alpha-3': 'USA', '_category': 'place', '_type': 'village', 'continent': 'North America', 'country': 'United States of America', 'country_code': 'us', 'county': 'McCurtain County', 'hamlet': 'America', 'state': 'Oklahoma', 'state_code': 'OK'}, 'confidence': 7, 'formatted': 'America, OK, United States of America', 'geometry': {'lat': 33.8153914, 'lng': -94.5485423}}, {'annotations': {'DMS': {'lat': \"10° 54' 0.15804'' N\", 'lng': \"124° 56' 50.27244'' E\"}, 'MGRS': '51PYN1283905611', 'Maidenhead': 'PK20lv36qa', 'Mercator': {'x': 13909069.578, 'y': 1212698.782}, 'OSM': {'edit_url': 'https://www.openstreetmap.org/edit?node=2531444068#map=17/10.90004/124.94730', 'note_url': 'https://www.openstreetmap.org/note/new#map=17/10.90004/124.94730&layers=N', 'url': 'https://www.openstreetmap.org/?mlat=10.90004&mlon=124.94730#map=17/10.90004/124.94730'}, 'UN_M49': {'regions': {'ASIA': '142', 'PH': '608', 'SOUTHEAST_ASIA': '035', 'WORLD': '001'}, 'statistical_groupings': ['LEDC']}, 'callingcode': 63, 'currency': {'alternate_symbols': ['PHP', 'PhP', 'P'], 'decimal_mark': '.', 'html_entity': '&#x20B1;', 'iso_code': 'PHP', 'iso_numeric': '608', 'name': 'Philippine Peso', 'smallest_denomination': 1, 'subunit': 'Centavo', 'subunit_to_unit': 100, 'symbol': '₱', 'symbol_first': 1, 'thousands_separator': ','}, 'flag': '🇵🇭', 'geohash': 'wcby50rc756n89w43y40', 'qibla': 290.33, 'roadinfo': {'drive_on': 'right', 'speed_in': 'km/h'}, 'sun': {'rise': {'apparent': 1592860800, 'astronomical': 1592856120, 'civil': 1592859420, 'nautical': 1592857800}, 'set': {'apparent': 1592820240, 'astronomical': 1592824920, 'civil': 1592821620, 'nautical': 1592823240}}, 'timezone': {'name': 'Asia/Manila', 'now_in_dst': 0, 'offset_sec': 28800, 'offset_string': '+0800', 'short_name': 'PST'}, 'what3words': {'words': 'adoring.vinyl.distillation'}}, 'bounds': {'northeast': {'lat': 10.9200439, 'lng': 124.9672979}, 'southwest': {'lat': 10.8800439, 'lng': 124.9272979}}, 'components': {'ISO_3166-1_alpha-2': 'PH', 'ISO_3166-1_alpha-3': 'PHL', '_category': 'place', '_type': 'village', 'continent': 'Asia', 'country': 'Philippines', 'country_code': 'ph', 'county': 'La Paz', 'hamlet': 'America', 'postcode': '6508', 'state': 'Leyte', 'state_district': 'Leyte 2nd District', 'town': 'La Paz'}, 'confidence': 7, 'formatted': 'La Paz, 6508 Leyte, Philippines', 'geometry': {'lat': 10.9000439, 'lng': 124.9472979}}]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "2lLQ9D_E1GGr",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 244
+        },
+        "outputId": "37afe650-880f-4496-820e-6d082fbbdda8"
+      },
+      "source": [
+        "list_lat = []   # create empty lists\n",
+        "\n",
+        "list_long = []\n",
+        "\n",
+        "\n",
+        "\t\n",
+        "#for index, row in df2[['City','State']]: # iterate over rows in dataframe\n",
+        "for City, State in zip(df2['City'],df2['State']):\n",
+        "  #print (City,State)\n",
+        "  \n",
+        "  results = geocoder.geocode(f'{City}, {State}')   \n",
+        "  lat = results[0]['geometry']['lat']\n",
+        "  long = results[0]['geometry']['lng']\n",
+        "\n",
+        "  list_lat.append(lat)\n",
+        "  list_long.append(long)\n",
+        "#create new columns from lists    \n",
+        "\n",
+        "df2['lat'] = list_lat   \n",
+        "\n",
+        "\n",
+        "df2['lon'] = list_long"
+      ],
+      "execution_count": 80,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "IndexError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mIndexError\u001b[0m                                Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-80-151ea7ee6034>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     10\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     11\u001b[0m   \u001b[0mresults\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mgeocoder\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mgeocode\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34mf'{City}, {State}'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 12\u001b[0;31m   \u001b[0mlat\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mresults\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'geometry'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'lat'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     13\u001b[0m   \u001b[0mlong\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mresults\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'geometry'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'lng'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     14\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mIndexError\u001b[0m: list index out of range"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "DJAkvVmM6rrm",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "maa2zciI6r0W",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kdKxj6Nw6sAf",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "bZnKj3Uk6srq",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "8SYQfv2M6so9",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "AQy_nl7P6smU",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "vzK8sM9t6sjn",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "SEfGM_LE6r9b",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "CXRi3mJy6rxT",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "pd.concat([df1['c'], df2['c']], axis=1, keys=['df1', 'df2'])"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "4Y9UQnva6rul",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "VC = "
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}

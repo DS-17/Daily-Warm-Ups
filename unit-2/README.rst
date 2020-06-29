@@ -33,6 +33,4 @@ heading into Unit 3.
 - `How to create a bootable iso installer from Windows <https://ubuntu.com/tutorials/tutorial-create-a-usb-stick-on-windows#1-overview>`_
 - `Installation guide <https://ubuntu.com/tutorials/tutorial-install-ubuntu-desktop#1-overview>`_
 
-Remember to Enjoy yourselves during your time off as well and return recharged and refreshed
-
-because we will hit the ground running on July 6.
+Remember to Enjoy yourselves during your time off as well and return recharged and refreshed because we will hit the ground running on July 6.

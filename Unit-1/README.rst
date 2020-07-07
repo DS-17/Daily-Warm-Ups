@@ -17,6 +17,10 @@ Day 2
 Breakout into your respective TL groups, one of you should start a zoom call
 and post the link so your teammates can join.
 
-Further instructions for the days warm up can be found in `docs/day-2.pdf`
+Further instructions for the days warm up can be found in 
+
+```
+docs/day-2-git-fundamentals.png
+```
 
 Good luck!

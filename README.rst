@@ -12,3 +12,5 @@ with Python in general and the git workflow, while reinforcing the
 core curriculum you are being taught. I hope that you find the
 information contained here useful and conducive to your learning experience
 here.
+
+Hello World!

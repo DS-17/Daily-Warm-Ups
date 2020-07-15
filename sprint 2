@@ -1,0 +1,107 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Copy of Untitled29.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyMBDCEEg6hvjJs3wSwe5WPA",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/nealonleo9/Daily-Warm-Ups/blob/master/sprint%202\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "VYAm1dfhCC5x",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "\n",
+        "How can outliers impact your model?\n",
+        "\n",
+        "#Outliers can have a dramatic impact on linear regression. It can change the model equation completely i.e. bad prediction or estimation\n",
+        "\n",
+        "What are some benefits of using pipelines in your workflow?\n",
+        "\n",
+        "#its quick to impliment and works for ur end goal\n",
+        "\n",
+        "Which of the following algorithms is not an example of an ensemble learning algorithm?\n",
+        "\n",
+        "# \n",
+        "\n",
+        "A) Random Forest\n",
+        "\n",
+        "B) Extra Trees\n",
+        "\n",
+        "C)# Decision Trees\n",
+        "\n",
+        "D) Gradient Boosting\n",
+        "\n",
+        "E) Adaboost\n",
+        "\n",
+        "Define the following terms\n",
+        "Root Node:\n",
+        "\n",
+        "#A root node is just like any node, in that it is part \n",
+        "#of a data structure which consists of one or more fields\n",
+        "#with links to other nodes and contains a data field;\n",
+        "#it simply happens to be the first node. In this regard, \n",
+        "#any node can be a root node in relation to itself and its \n",
+        "#children if that section of the tree is objectively selected. \n",
+        "\n",
+        "Decision Node:\n",
+        "\n",
+        "#each internal node represents a \"test\"\n",
+        "\n",
+        "Leaf Node:\n",
+        "\n",
+        "#part of a desision tree\n",
+        "\n",
+        "In your own words, how would you explain to a non-technical stakeholder how decision trees determine feature importances\n",
+        "\n",
+        "#it filters down by paramiters and applys weight to the true or false aspect\n",
+        "\n",
+        "What is an often encountered drawback when using decision trees?\n",
+        "\n",
+        "# not usually best option\n",
+        "\n",
+        "Post an emoji of a fruit that grows on a tree in slack\n",
+        "\n",
+        "\n",
+        "\n",
+        "How do random forest models attempt to improve on this?\n",
+        "\n",
+        "# By deciding if random things are important\n",
+        "\n",
+        "Describe three business use cases where random forest models could provide value\n",
+        "1)sales\n",
+        "\n",
+        "2)\n",
+        "\n",
+        "3)\n",
+        "\n",
+        "Give an example of a situation where you would not want to use a random forest model\n",
+        "Watch\n",
+        "#if i have cancer or not"
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}

@@ -110,6 +110,7 @@ net-negative response. If you do have an answer, reference contextual
 material that supports your answer. Summarize important parts of pertinent
 links, especially when the source material is lengthy in nature. Lastly,
 write clearly and concisely.
+.
 
 `Here is an example of a good question and answer on StackOverflow <https://stackoverflow
 .com/questions/493386/how-to-print-without-newline-or-space>`_

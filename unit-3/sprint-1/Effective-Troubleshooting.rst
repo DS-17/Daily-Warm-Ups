@@ -106,7 +106,7 @@ not generate them in attacking those asking for help. As the saying goes
 if you cannot find something nice to say, better to say nothing at all.
 You can always ask for clarification or give advice on how to better pose
 questions in the future. A net-neutral response is always better than a
-net-negative response. If you do have answer reference contextual
+net-negative response. If you do have an answer, reference contextual
 material that supports your answer. Summarize important parts of pertinent
 links, especially when the source material is lengthy in nature. Lastly,
 write clearly and concisely.

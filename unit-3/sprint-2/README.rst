@@ -11,4 +11,4 @@ Set up the environment:
     ``Poetry install --no-root``
 
 - With Pip:
-    ``pip install requirements/dev.txt``
+    ``pip install -r requirements/dev.txt``

@@ -13,15 +13,25 @@ from pathlib import Path
 import pandas as pd
 import sqlite3
 
+DB_FILEPATH = "Daily-Warm-Ups/unit-3/sprint-2/pyproject.toml"
+
 
 def _validate_filepath(pattern: str) -> None:
     """Validate that a provided filepath exists.
-
+finally:
+    f.close()
     :param pattern: A filepath
     :type pattern: str
     :return: None if file exists.
     :raises: ?
     """
+    try:
+        f = open("Daily-Warm-Ups/unit-3/sprint-2/pyproject.toml")
+        # Do something with the file
+    except IOError:
+        print("File not accessible")
+    finally:
+        f.close()
     # Your code here, for help look into the ``pathlib`` module
 
 
@@ -95,4 +105,3 @@ class DbHelper(object):
     #     Defining exception handling here allows the class to be used
     #     inside of a ``with`` statement, and closed out upon error.
     #     """
-    

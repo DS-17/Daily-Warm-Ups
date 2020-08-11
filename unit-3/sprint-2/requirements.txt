@@ -1,0 +1,3 @@
+# Most PaaS (Platforms as a Service eg. Heroku) still require a top level
+# requirements.txt or Pipfile
+-r requirements/prod.txt

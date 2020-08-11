@@ -1,6 +1,6 @@
 # OS SPECIFIC
 .DS_STORE/
-Desktop.ini
+desktop.ini
 
 # Jupyter Checkpoints
 .ipynb_checkpoints/
@@ -9,4 +9,6 @@ Desktop.ini
 .vs_code/
 .idea/
 
-Unit-1/.venv/
+unit-1/.venv/
+
+poetry.lock

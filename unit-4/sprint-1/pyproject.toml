@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "Natural Language Processing"
+version = "0.1.0"
+description = ""
+authors = ["Brian Thomas Ross <ml@brianthomasross.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6.9"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

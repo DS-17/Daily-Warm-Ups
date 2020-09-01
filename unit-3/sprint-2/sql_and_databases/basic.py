@@ -6,11 +6,10 @@ from pathlib import Path
 import sqlite3
 from typing import List
 
+DB_FILEPATH = "Daily-Warm-Ups/unit-3/sprint-2/pyproject.toml"
 
-_valid_contexts: List[str] = ['sqlite',
-                              # 'postgres',
-                              # 'mongo'
-                              ]
+
+
 
 
 # Defining this function outside the scope of the class ensures that
@@ -49,4 +48,4 @@ class DbHelper(object):
     #     """Entering the context statement."""
     #
     # def __exit__(self, ext_type, exc_value, traceback):
-    #     """Exiting the context statement."""
+

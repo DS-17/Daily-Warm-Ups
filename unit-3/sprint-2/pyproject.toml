@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "sprint-2"
+name = "unit-3-sprint-2"
 version = "0.1.0"
 description = ""
 authors = ["Brian Thomas Ross <ml@brianthomasross.com>"]
